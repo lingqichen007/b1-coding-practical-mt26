@@ -75,8 +75,13 @@ class Mission:
 
     @classmethod
     def from_csv(cls, file_name: str):
-        # You are required to implement this method
-        pass
+            data = np.genfromtxt(file_name, delimiter=",", names=True)
+            data = np.atleast_1d(data)
+            return cls(
+                reference=data["reference"],
+                cave_height=data["cave_height"],
+                cave_depth=data["cave_depth"],
+            )
 
 
 class ClosedLoop:
